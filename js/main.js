@@ -8,6 +8,16 @@ document.querySelector('.menu-icon-wrapper').onclick = function(){
   document.querySelector('.menu-icon').classList.toggle('menu-icon-active');
   menuTop.classList.toggle('menu__top__active');
   body.classList.toggle('no-scroll');
+
+  menuTop.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if(a.closest('.menu__top__active')){
+        document.querySelector('.menu-icon').classList.toggle('menu-icon-active');
+        menuTop.classList.toggle('menu__top__active');
+        body.classList.toggle('no-scroll');
+      }
+    })
+  })
 }
 
 
@@ -15,7 +25,7 @@ document.querySelector('.menu-icon-wrapper').onclick = function(){
 
 const arrFooterTitle = Array.from(document.querySelectorAll('.footer__title'));
 
-arrFooterTitle.forEach(function(title,){
+arrFooterTitle.forEach(function(title){
   title.dataset.action = 'spoiler';
 })
 
@@ -100,3 +110,6 @@ function showNextSlide(direction){
      customerJob.innerHTML = arrCustomerJobs[nextImgIndex];
      customerName.innerHTML = arrCustomerNames[nextImgIndex];
 }
+
+
+new WOW().init();
